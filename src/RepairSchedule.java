@@ -13,7 +13,7 @@ public class RepairSchedule
      */
     public RepairSchedule(int n) {
         numberOfMechanics = n;
-        schedule = new ArrayList<CarRepair>()
+        schedule = new ArrayList<CarRepair>();
 
     }
 
@@ -38,7 +38,19 @@ public class RepairSchedule
      * as described in part (b).
      */
     public ArrayList<Integer> availableMechanics() {
-
+        ArrayList<Integer> availableList = new ArrayList<Integer>();
+        for(int i = 0; i < numberOfMechanics; i++){
+            int count = 0;
+            for(CarRepair item : schedule){
+                if(item.getMechanicNum() == i){
+                    count++;
+                }
+            }
+            if(count == 0){
+                availableList.add(i);
+            }
+        }
+        return availableList;
     }
 
     /** Removes an element from schedule when a repair is complete. */
